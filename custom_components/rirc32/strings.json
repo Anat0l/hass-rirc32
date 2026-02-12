@@ -1,0 +1,126 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "RIRC Account",
+        "description": "Enter your lk.rirc.ru login credentials.",
+        "data": {
+          "login": "Login (email)",
+          "password": "Password"
+        },
+        "data_description": {
+          "login": "Your email address used to log in to lk.rirc.ru.",
+          "password": "Your lk.rirc.ru account password."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate RIRC",
+        "description": "The credentials for {login} are no longer valid. Please enter the new password.",
+        "data": {
+          "password": "Password"
+        },
+        "data_description": {
+          "password": "Your new lk.rirc.ru account password."
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure RIRC",
+        "description": "Update your lk.rirc.ru login credentials.",
+        "data": {
+          "login": "Login (email)",
+          "password": "Password"
+        },
+        "data_description": {
+          "login": "Your email address used to log in to lk.rirc.ru.",
+          "password": "Your lk.rirc.ru account password."
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid login or password.",
+      "cannot_connect": "Cannot connect to lk.rirc.ru.",
+      "timeout": "Connection timeout.",
+      "unknown": "Unknown error occurred."
+    },
+    "abort": {
+      "already_configured": "This account is already configured.",
+      "reauth_successful": "Re-authentication successful."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "account": {
+        "name": "Personal account"
+      },
+      "meter_reading": {
+        "name": "Last reading"
+      },
+      "tariff": {
+        "name": "Tariff"
+      },
+      "balance": {
+        "name": "Balance"
+      },
+      "last_payment_date": {
+        "name": "Last payment date"
+      },
+      "last_payment_amount": {
+        "name": "Last payment amount"
+      },
+      "receipt_number": {
+        "name": "Receipt number"
+      },
+      "last_update": {
+        "name": "Last data update"
+      }
+    },
+    "button": {
+      "refresh": {
+        "name": "Refresh data"
+      }
+    }
+  },
+  "services": {
+    "refresh": {
+      "name": "Refresh data",
+      "description": "Force refresh all RIRC data."
+    },
+    "send_readings": {
+      "name": "Send meter readings",
+      "description": "Submit meter readings to RIRC. Select the account (device) and the sensor that provides the reading value.",
+      "fields": {
+        "device_id": {
+          "name": "Account",
+          "description": "Select the RIRC account (device) to submit readings for."
+        },
+        "value_entity_id": {
+          "name": "Reading value sensor",
+          "description": "Select the sensor that provides the reading value to submit."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "no_integration": {
+      "message": "No RIRC integration configured."
+    },
+    "device_not_found": {
+      "message": "Device not found."
+    },
+    "no_meter_sensors": {
+      "message": "No meter reading sensors found for the selected device."
+    },
+    "entity_not_found": {
+      "message": "Value entity not found."
+    },
+    "invalid_value": {
+      "message": "The selected sensor does not have a valid numeric value."
+    }
+  },
+  "issues": {
+    "auth_failed": {
+      "title": "RIRC authentication failed",
+      "description": "Authentication to lk.rirc.ru has failed. Please check your login credentials and reconfigure the integration if necessary."
+    }
+  }
+}

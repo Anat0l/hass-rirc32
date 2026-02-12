@@ -1,0 +1,39 @@
+{
+  "entity": {
+    "sensor": {
+      "account": {
+        "default": "mdi:home-city"
+      },
+      "meter_reading": {
+        "default": "mdi:gauge"
+      },
+      "tariff": {
+        "default": "mdi:cash"
+      },
+      "balance": {
+        "default": "mdi:currency-rub"
+      },
+      "last_payment_date": {
+        "default": "mdi:calendar-check"
+      },
+      "last_payment_amount": {
+        "default": "mdi:credit-card-check-outline"
+      },
+      "receipt_number": {
+        "default": "mdi:file-document-outline"
+      },
+      "last_update": {
+        "default": "mdi:clock-check-outline"
+      }
+    },
+    "button": {
+      "refresh": {
+        "default": "mdi:refresh"
+      }
+    }
+  },
+  "services": {
+    "refresh": "mdi:refresh",
+    "send_readings": "mdi:send"
+  }
+}

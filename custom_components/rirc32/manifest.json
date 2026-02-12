@@ -1,0 +1,13 @@
+{
+  "domain": "rirc32",
+  "name": "РИРЦ (Брянской области)",
+  "codeowners": ["@Anat0l"],
+  "config_flow": true,
+  "dependencies": ["diagnostics"],
+  "documentation": "https://github.com/Anat0l/hass-rirc32",
+  "issue_tracker": "https://github.com/Anat0l/hass-rirc32/issues",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "1.0.0"
+}

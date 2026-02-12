@@ -1,0 +1,25 @@
+refresh:
+  name: Refresh data
+  description: Force refresh all RIRC data.
+
+send_readings:
+  name: Send meter readings
+  description: Submit meter readings to RIRC. Select the meter to submit to and the sensor that provides the reading value.
+  fields:
+    device_id:
+      name: Account (device)
+      description: Select the RIRC account (device) to submit readings for.
+      required: true
+      selector:
+        device:
+          integration: rirc32
+          multiple: false
+    value_entity_id:
+      name: Reading value sensor
+      description: Select the sensor that provides the reading value to submit.
+      required: true
+      selector:
+        entity:
+          filter:
+            - domain: sensor
+          multiple: false
