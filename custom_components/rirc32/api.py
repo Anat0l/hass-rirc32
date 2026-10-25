@@ -29,6 +29,7 @@ from .exceptions import (
     RIRCConnectionError,
     RIRCTimeoutError,
 )
+from .ssl_chain import RircSession
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -36,7 +37,7 @@ _LOGGER = logging.getLogger(__name__)
 class RIRCApi:
     """API client for RIRC personal cabinet."""
 
-    def __init__(self, auth: RIRCAuth, session: aiohttp.ClientSession) -> None:
+    def __init__(self, auth: RIRCAuth, session: RircSession) -> None:
         """Initialize API client."""
         self._auth = auth
         self._session = session

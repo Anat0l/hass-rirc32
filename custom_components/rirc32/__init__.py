@@ -6,14 +6,16 @@ import logging
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.aiohttp_client import async_create_clientsession
+from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.typing import ConfigType
 
 from .api import RIRCApi
 from .auth import RIRCAuth
 from .const import DOMAIN, PLATFORMS
 from .coordinator import RIRCCoordinator
+from .exceptions import RIRCConnectionError
 from .services import async_setup_services, async_unload_services
+from .ssl_chain import async_create_rirc_session
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -28,7 +30,10 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
 async def async_setup_entry(hass: HomeAssistant, entry: RIRCConfigEntry) -> bool:
     """Set up RIRC from a config entry."""
-    session = async_create_clientsession(hass)
+    try:
+        session = await async_create_rirc_session(hass)
+    except RIRCConnectionError as err:
+        raise ConfigEntryNotReady(str(err)) from err
     auth = RIRCAuth(session)
     api = RIRCApi(auth, session)
 
