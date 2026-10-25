@@ -19,6 +19,7 @@ from .const import (
     FIELD_PASSWORD,
 )
 from .exceptions import RIRCAuthError, RIRCConnectionError, RIRCTimeoutError
+from .ssl_chain import RircSession
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -29,7 +30,7 @@ TOKEN_EXPIRY = 1800  # 30 min (server may expire earlier)
 class RIRCAuth:
     """Handle authentication for RIRC personal cabinet."""
 
-    def __init__(self, session: aiohttp.ClientSession) -> None:
+    def __init__(self, session: RircSession) -> None:
         """Initialize the auth handler."""
         self._session = session
         self._authenticated = False

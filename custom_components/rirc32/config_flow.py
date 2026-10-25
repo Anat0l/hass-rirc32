@@ -11,12 +11,12 @@ from homeassistant.config_entries import (
     ConfigFlow,
     ConfigFlowResult,
 )
-from homeassistant.helpers.aiohttp_client import async_create_clientsession
 
 from .api import RIRCApi
 from .auth import RIRCAuth
 from .const import CONF_LOGIN, CONF_PASSWORD, DOMAIN
 from .exceptions import RIRCAuthError, RIRCConnectionError, RIRCTimeoutError
+from .ssl_chain import async_create_rirc_session
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ class RIRCConfigFlow(ConfigFlow, domain=DOMAIN):
 
             # Try to authenticate
             try:
-                session = async_create_clientsession(self.hass)
+                session = await async_create_rirc_session(self.hass)
                 auth = RIRCAuth(session)
                 api = RIRCApi(auth, session)
 
@@ -103,7 +103,7 @@ class RIRCConfigFlow(ConfigFlow, domain=DOMAIN):
             password = user_input[CONF_PASSWORD]
 
             try:
-                session = async_create_clientsession(self.hass)
+                session = await async_create_rirc_session(self.hass)
                 auth = RIRCAuth(session)
                 api = RIRCApi(auth, session)
                 await api.async_login(login, password)
@@ -150,7 +150,7 @@ class RIRCConfigFlow(ConfigFlow, domain=DOMAIN):
             password = user_input[CONF_PASSWORD]
 
             try:
-                session = async_create_clientsession(self.hass)
+                session = await async_create_rirc_session(self.hass)
                 auth = RIRCAuth(session)
                 api = RIRCApi(auth, session)
                 await api.async_login(login, password)
